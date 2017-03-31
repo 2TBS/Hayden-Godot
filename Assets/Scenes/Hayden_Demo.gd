@@ -5,39 +5,22 @@ extends Node
 # var b = "textvar"
 
 func _ready():
-	#self.set_process(true)
-	self.set_process_input(true)
-
-func _input(event):
-	if(event.type == InputEvent.KEY):
-		var curPos = self.get_pos()
-		
-		if(event.scancode == KEY_D):
-			curPos.x += 10
-			self.set_pos(curPos)
-			self.get_tree().set_input_as_handled()
-	if(event.type == InputEvent.KEY):
-		var curPos = self.get_pos()
-		
-		if(event.scancode == KEY_A):
-			curPos.x -=10
-			self.set_pos(curPos)
-			self.get_tree().set_input_as_handled()
-	if(event.type == InputEvent.KEY):
-		var curPos = self.get_pos()
-		
-		if(event.scancode == KEY_W):
-			curPos.y -=10
-			self.set_pos(curPos)
-			self.get_tree().set_input_as_handled()
-	if(event.type == InputEvent.KEY):
-		var curPos = self.get_pos()
-		
-		if(event.scancode == KEY_S):
-			curPos.y +=10
-			self.set_pos(curPos)
-			self.get_tree().set_input_as_handled()
+	self.set_process(true)
 
 func _process(delta):
-	if(Input.is_key_pressed(KEY_ESCAPE)):
-		self.get_tree().quit()
+	if(Input.is_action_pressed("MOVE_RIGHT")):
+		var curPos = self.get_pos()
+		curPos.x += 100 * delta
+		self.set_pos(curPos)
+	if(Input.is_action_pressed("MOVE_LEFT")):
+		var curPos = self.get_pos()
+		curPos.x -= 100 * delta
+		self.set_pos(curPos)
+	if(Input.is_action_pressed("MOVE_UP")):
+		var curPos = self.get_pos()
+		curPos.y -= 100 * delta
+		self.set_pos(curPos)
+	if(Input.is_action_pressed("MOVE_DOWN")):
+		var curPos = self.get_pos()
+		curPos.y += 10 * delta
+		self.set_pos(curPos)
