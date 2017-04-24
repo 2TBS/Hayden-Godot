@@ -22,5 +22,5 @@ func _process(delta):
 		self.set_pos(curPos)
 	if(Input.is_action_pressed("MOVE_DOWN")):
 		var curPos = self.get_pos()
-		curPos.y += 10 * delta
+		curPos.y += 100 * delta
 		self.set_pos(curPos)
